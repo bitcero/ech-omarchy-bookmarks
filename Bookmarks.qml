@@ -299,7 +299,7 @@ Item {
               color: root.foreground
               opacity: 0.45
               font.family: root.fontFamily
-              font.pixelSize: Style.font.body
+              font.pixelSize: Style.font.subtitle
             }
 
             Button {
@@ -310,7 +310,7 @@ Item {
               bordered: true
               foreground: root.foreground
               fontFamily: root.fontFamily
-              fontSize: Style.font.caption
+              fontSize: Style.font.bodySmall
               onClicked: root.compose()
             }
 
@@ -325,7 +325,7 @@ Item {
               color: root.foreground
               opacity: 0.45
               font.family: root.fontFamily
-              font.pixelSize: Style.font.caption
+              font.pixelSize: Style.font.bodySmall
             }
 
             Text {
@@ -339,7 +339,7 @@ Item {
               color: root.foreground
               opacity: root.query ? 1 : 0.45
               font.family: root.fontFamily
-              font.pixelSize: Style.font.title
+              font.pixelSize: Style.font.heading
               elide: Text.ElideRight
             }
           }
@@ -434,7 +434,7 @@ Item {
             color: root.foreground
             opacity: 0.45
             font.family: root.fontFamily
-            font.pixelSize: Style.font.caption
+            font.pixelSize: Style.font.bodySmall
             elide: Text.ElideRight
 
             readonly property string hintLine: root.mode === "list"

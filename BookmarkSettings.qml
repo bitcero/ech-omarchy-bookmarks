@@ -45,6 +45,6 @@ Column {
     color: root.foreground
     opacity: 0.55
     font.family: root.fontFamily
-    font.pixelSize: Style.font.caption
+    font.pixelSize: Style.font.bodySmall
   }
 }

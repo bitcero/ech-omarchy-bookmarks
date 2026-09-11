@@ -60,7 +60,7 @@ Item {
         color: row.here ? root.selectedText : root.foreground
         opacity: 0.45
         font.family: root.fontFamily
-        font.pixelSize: Style.font.caption
+        font.pixelSize: Style.font.bodySmall
       }
 
       Text {
@@ -73,7 +73,7 @@ Item {
         color: row.here ? root.selectedText : root.foreground
         opacity: 0.45
         font.family: root.fontFamily
-        font.pixelSize: Style.font.caption
+        font.pixelSize: Style.font.bodySmall
       }
 
       Text {
@@ -86,7 +86,7 @@ Item {
         color: row.here ? root.selectedText : root.foreground
         opacity: 0.6
         font.family: root.fontFamily
-        font.pixelSize: Style.font.caption
+        font.pixelSize: Style.font.bodySmall
       }
 
       Text {
@@ -99,7 +99,7 @@ Item {
         text: row.modelData.name
         color: row.here ? root.selectedText : root.foreground
         font.family: root.fontFamily
-        font.pixelSize: Style.font.body
+        font.pixelSize: Style.font.subtitle
         elide: Text.ElideRight
       }
 
@@ -124,6 +124,6 @@ Item {
     color: root.foreground
     opacity: 0.55
     font.family: root.fontFamily
-    font.pixelSize: Style.font.body
+    font.pixelSize: Style.font.subtitle
   }
 }
