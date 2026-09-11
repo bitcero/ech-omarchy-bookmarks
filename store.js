@@ -77,10 +77,16 @@ function countUse(marks, id) {
   })
 }
 
+// Bookmarks already at the destination belong to the user, most likely a
+// copy from a synced directory: keep them and leave ours where it is.
+function moveScript() {
+  return 'mkdir -p "$(dirname "$2")"; [ -s "$2" ] || mv "$1" "$2"'
+}
+
 if (typeof module !== "undefined") {
   module.exports = {
     cleanUrl: cleanUrl, host: host, fullUrl: fullUrl, newId: newId,
     parse: parse, serialize: serialize, filter: filter, upsert: upsert,
-    remove: remove, countUse: countUse
+    remove: remove, countUse: countUse, moveScript: moveScript
   }
 }

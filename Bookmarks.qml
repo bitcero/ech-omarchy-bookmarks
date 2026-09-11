@@ -134,7 +134,7 @@ Item {
   function relocate(raw) {
     var to = expand(raw)
     if (!to || to === filePath) { back(); return }
-    run(mover, ["bash", "-c", moveCommand(filePath, to)])
+    run(mover, ["bash", "-c", Store.moveScript(), "bookmarks", filePath, to])
     filePath = to
     settingsFile.setText(JSON.stringify({ path: to }, null, 2) + "\n")
     back()
@@ -142,13 +142,6 @@ Item {
 
   function expand(raw) {
     return raw.trim().replace(/^~/, Quickshell.env("HOME"))
-  }
-
-  // Bookmarks already at the destination are the user's own, most likely a
-  // copy synced from elsewhere: they win and our file stays put.
-  function moveCommand(from, to) {
-    return "mkdir -p \"$(dirname '" + to + "')\"; "
-      + "[ -s '" + to + "' ] || mv '" + from + "' '" + to + "'"
   }
 
   function back() {

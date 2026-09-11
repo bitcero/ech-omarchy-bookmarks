@@ -44,3 +44,45 @@ test("a corrupt file yields no bookmarks instead of throwing", () => {
   assert.deepEqual(S.parse("{not json"), [])
 })
 
+
+const { execFileSync } = require("node:child_process")
+const { mkdtempSync, writeFileSync, readFileSync, existsSync } = require("node:fs")
+const { join } = require("node:path")
+const { tmpdir } = require("node:os")
+
+function relocate(fromBody, toBody) {
+  const dir = mkdtempSync(join(tmpdir(), "bm-"))
+  const from = join(dir, "here.json")
+  const to = join(dir, "nested", "there.json")
+  writeFileSync(from, fromBody)
+  if (toBody !== null) {
+    execFileSync("mkdir", ["-p", join(dir, "nested")])
+    writeFileSync(to, toBody)
+  }
+  execFileSync("bash", ["-c", S.moveScript(), "bookmarks", from, to])
+  return {
+    from: existsSync(from) ? readFileSync(from, "utf8") : null,
+    to: existsSync(to) ? readFileSync(to, "utf8") : null
+  }
+}
+
+test("moving to a free path takes the bookmarks along", () => {
+  const r = relocate("mine", null)
+  assert.equal(r.to, "mine")
+  assert.equal(r.from, null)
+})
+
+test("moving onto existing bookmarks keeps theirs and ours stays put", () => {
+  const r = relocate("mine", "theirs")
+  assert.equal(r.to, "theirs")
+  assert.equal(r.from, "mine")
+})
+
+test("a path with an apostrophe does not break the move", () => {
+  const dir = mkdtempSync(join(tmpdir(), "bm-"))
+  const from = join(dir, "here.json")
+  const to = join(dir, "ed's marks.json")
+  writeFileSync(from, "mine")
+  execFileSync("bash", ["-c", S.moveScript(), "bookmarks", from, to])
+  assert.equal(readFileSync(to, "utf8"), "mine")
+})
