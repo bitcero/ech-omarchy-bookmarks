@@ -23,6 +23,7 @@ Item {
   property string editId: ""
   property string notice: ""
   property bool opened: false
+  property var pending: null
 
   property color background: Color.menu.background
   property color foreground: Color.menu.text
@@ -107,7 +108,14 @@ Item {
     back()
   }
 
-  function drop(mark) {
+  function askDrop(mark) {
+    if (!mark) return
+    pending = mark
+  }
+
+  function drop() {
+    var mark = pending
+    pending = null
     if (!mark) return
     store(Store.remove(marks, mark.id))
     selected = 0
@@ -219,12 +227,35 @@ Item {
 
       MouseArea { anchors.fill: parent; onClicked: {} }
 
+      ConfirmDialog {
+        id: confirmDrop
+        anchors.fill: parent
+        z: 10
+        opened: root.pending !== null
+        message: root.pending ? "Delete “" + root.pending.name + "”?" : ""
+        confirmText: "Delete"
+        background: root.background
+        foreground: root.foreground
+        scrim: root.scrim
+        selectedBackground: root.selectedBackground
+        selectedText: root.selectedText
+        fontFamily: root.fontFamily
+        cornerRadius: Style.cornerRadius
+        onCanceled: root.pending = null
+        onConfirmed: root.drop()
+      }
+
       Item {
         id: keys
         anchors.fill: parent
         focus: root.mode === "list" || root.mode === "help"
+          || root.pending !== null
         Keys.priority: Keys.BeforeItem
         Keys.onPressed: function (event) {
+          if (root.pending) {
+            if (confirmDrop.handleKey(event)) event.accepted = true
+            return
+          }
           if (root.mode === "help") {
             if (event.key === Qt.Key_Escape) root.back()
             event.accepted = true
@@ -245,7 +276,7 @@ Item {
           } else if (event.key === Qt.Key_C && mod(event, Qt.AltModifier)) {
             root.copy(root.current)
           } else if (event.key === Qt.Key_Delete) {
-            root.drop(root.current)
+            root.askDrop(root.current)
           } else if (event.key === Qt.Key_H && mod(event, Qt.ControlModifier)) {
             root.help()
           } else if (event.key === Qt.Key_Comma
