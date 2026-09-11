@@ -27,6 +27,7 @@ o.bind("SUPER + SHIFT + V", "Bookmarks", "omarchy-shell shell toggle bitcero.boo
 | filter by name or url | type |
 | move | `↑` `↓` |
 | open in the browser | `⏎` |
+| open one of the first nine | `alt+1`…`alt+9` |
 | save a new bookmark | `ctrl+⏎` |
 | edit the selected one | `ctrl+e` |
 | copy its url | `alt+c` |

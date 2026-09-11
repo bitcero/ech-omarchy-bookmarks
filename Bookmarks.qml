@@ -277,6 +277,8 @@ Item {
           } else if (event.key === Qt.Key_Comma
                      && mod(event, Qt.ControlModifier)) {
             root.settings()
+          } else if (numbered(event)) {
+            root.launch(root.shown[event.key - Qt.Key_1])
           } else if (event.key === Qt.Key_Up) {
             root.move(-1)
           } else if (event.key === Qt.Key_Down) {
@@ -298,6 +300,11 @@ Item {
 
         function mod(event, which) {
           return (event.modifiers & which) !== 0
+        }
+
+        function numbered(event) {
+          return mod(event, Qt.AltModifier)
+            && event.key >= Qt.Key_1 && event.key <= Qt.Key_9
         }
 
         function typed(event) {

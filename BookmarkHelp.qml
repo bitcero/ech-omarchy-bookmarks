@@ -13,6 +13,7 @@ Rectangle {
     { action: "filter by name or url", keys: "type" },
     { action: "move", keys: "↑ ↓" },
     { action: "open in the browser", keys: "⏎" },
+    { action: "open one of the first nine", keys: "alt+1…9" },
     { action: "save a new bookmark", keys: "ctrl+⏎" },
     { action: "edit the selected one", keys: "ctrl+e" },
     { action: "copy its url", keys: "alt+c" },

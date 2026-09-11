@@ -23,6 +23,13 @@ Item {
     ? marks.length * rowHeight + (marks.length - 1) * spacing
     : rowHeight * 2
 
+  TextMetrics {
+    id: widest
+    font.family: root.fontFamily
+    font.pixelSize: Style.font.bodySmall
+    text: "9"
+  }
+
   signal hovered(int index)
   signal activated(var mark)
 
@@ -55,8 +62,10 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: root.textPad
         anchors.verticalCenter: parent.verticalCenter
+        width: widest.width
+        horizontalAlignment: Text.AlignRight
         textFormat: Text.PlainText
-        text: row.index < 9 ? String(row.index + 1) : "·"
+        text: row.index < 9 ? String(row.index + 1) : ""
         color: row.here ? root.selectedText : root.foreground
         opacity: 0.45
         font.family: root.fontFamily
