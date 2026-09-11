@@ -275,7 +275,8 @@ Item {
             root.edit(root.current)
           } else if (event.key === Qt.Key_C && mod(event, Qt.AltModifier)) {
             root.copy(root.current)
-          } else if (event.key === Qt.Key_Delete) {
+          } else if (event.key === Qt.Key_Delete
+                     || (event.key === Qt.Key_Backspace && !root.query)) {
             root.askDrop(root.current)
           } else if (event.key === Qt.Key_H && mod(event, Qt.ControlModifier)) {
             root.help()
