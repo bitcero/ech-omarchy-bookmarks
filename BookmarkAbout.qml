@@ -34,7 +34,7 @@ Item {
 
     Image {
       anchors.horizontalCenter: parent.horizontalCenter
-      source: root.manifestPath.replace("manifest.json", "logo.svg")
+      source: root.manifestPath.replace("manifest.json", "bitcero.svg")
       sourceSize.width: Style.space(220)
       fillMode: Image.PreserveAspectFit
       smooth: true
