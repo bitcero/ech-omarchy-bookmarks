@@ -26,7 +26,7 @@ o.bind("SUPER + SHIFT + V", "Bookmarks", "omarchy-shell shell toggle ech.bookmar
 | `↑` `↓` | move |
 | `⏎` | open in the browser |
 | `ctrl+⏎` | save a new bookmark |
-| `F2` | edit the selected one |
+| `ctrl+e` | edit the selected one |
 | `alt+c` | copy its url |
 | `shift+supr` | delete it |
 | `ctrl+,` | change where bookmarks are stored |

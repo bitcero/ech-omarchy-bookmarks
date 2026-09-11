@@ -231,7 +231,7 @@ Item {
             root.compose()
           } else if (isEnter(event)) {
             root.launch(root.current)
-          } else if (event.key === Qt.Key_F2) {
+          } else if (event.key === Qt.Key_E && mod(event, Qt.ControlModifier)) {
             root.edit(root.current)
           } else if (event.key === Qt.Key_C && mod(event, Qt.AltModifier)) {
             root.copy(root.current)
@@ -438,7 +438,7 @@ Item {
             elide: Text.ElideRight
 
             readonly property string hintLine: root.mode === "list"
-              ? "↑↓ move · ⏎ open · ctrl+⏎ new · F2 edit · "
+              ? "↑↓ move · ⏎ open · ctrl+⏎ new · ctrl+e edit · "
                 + "alt+c copy · shift+del delete · ctrl+, storage"
               : "⏎ confirm · esc cancel"
           }
