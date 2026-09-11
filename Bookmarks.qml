@@ -438,9 +438,9 @@ Item {
             elide: Text.ElideRight
 
             readonly property string hintLine: root.mode === "list"
-              ? "↑↓ move · ⏎ open · ctrl+⏎ new · ctrl+e edit · "
-                + "alt+c copy · shift+del delete · ctrl+, storage"
-              : "⏎ confirm · esc cancel"
+              ? "move: ↑↓ · open: ⏎ · new: ctrl+⏎ · edit: ctrl+e · "
+                + "copy: alt+c · delete: shift+del · storage: ctrl+,"
+              : "confirm: ⏎ · cancel: esc"
           }
         }
       }

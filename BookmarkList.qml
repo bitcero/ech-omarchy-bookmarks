@@ -119,8 +119,8 @@ Item {
     textFormat: Text.PlainText
     horizontalAlignment: Text.AlignHCenter
     text: root.total
-      ? "no match\nctrl+⏎ to save one with that name"
-      : "no bookmarks\nctrl+⏎ to add one"
+      ? "no match\nsave one with that name: ctrl+⏎"
+      : "no bookmarks\nadd one: ctrl+⏎"
     color: root.foreground
     opacity: 0.55
     font.family: root.fontFamily

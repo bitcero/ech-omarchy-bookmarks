@@ -20,17 +20,17 @@ o.bind("SUPER + SHIFT + V", "Bookmarks", "omarchy-shell shell toggle ech.bookmar
 
 ## Use
 
-| Key | Action |
+| Action | Keys |
 |---|---|
-| type | filter by name or url |
-| `↑` `↓` | move |
-| `⏎` | open in the browser |
-| `ctrl+⏎` | save a new bookmark |
-| `ctrl+e` | edit the selected one |
-| `alt+c` | copy its url |
-| `shift+supr` | delete it |
-| `ctrl+,` | change where bookmarks are stored |
-| `esc` | clear the filter, then close |
+| filter by name or url | type |
+| move | `↑` `↓` |
+| open in the browser | `⏎` |
+| save a new bookmark | `ctrl+⏎` |
+| edit the selected one | `ctrl+e` |
+| copy its url | `alt+c` |
+| delete it | `shift+del` |
+| change where bookmarks are stored | `ctrl+,` |
+| clear the filter, then close | `esc` |
 
 The list is ordered by how often you open each bookmark.
 
