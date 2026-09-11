@@ -21,7 +21,7 @@ Column {
 
   Text {
     textFormat: Text.PlainText
-    text: "where bookmarks are stored"
+    text: "storage"
     color: root.foreground
     font.family: root.fontFamily
     font.pixelSize: Style.font.heading
@@ -41,9 +41,7 @@ Column {
     width: parent.width
     textFormat: Text.PlainText
     wrapMode: Text.WordWrap
-    text: "Changing the path moves the file. If bookmarks already exist at "
-      + "the destination, those are kept and the current file stays where "
-      + "it is."
+    text: "Moves the file. Bookmarks already at the new path win."
     color: root.foreground
     opacity: 0.55
     font.family: root.fontFamily

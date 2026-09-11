@@ -100,7 +100,7 @@ Item {
   function commit() {
     var next = Store.upsert(
       marks, { id: editId, url: form.urlText, name: form.nameText })
-    if (!next) { flash("a url is required"); return }
+    if (!next) { flash("url required"); return }
     store(next)
     query = ""
     selected = 0
@@ -356,49 +356,56 @@ Item {
           width: parent.width
           height: parent.height - y - foot.height - root.ruleHeight
 
-          BookmarkList {
-            id: rows
+          Item {
+            id: body
             anchors.fill: parent
-            edge: content.pad
-            textPad: content.inset
-            visible: root.mode === "list"
-            marks: root.shown
-            total: root.marks.length
-            selected: root.selected
-            foreground: root.foreground
-            selectedBackground: root.selectedBackground
-            selectedText: root.selectedText
-            fontFamily: root.fontFamily
-            onHovered: function (index) { root.selected = index }
-            onActivated: function (mark) { root.launch(mark) }
-          }
+            anchors.topMargin: content.pad
+            anchors.bottomMargin: content.pad
 
-          BookmarkForm {
-            id: form
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: content.inset
-            anchors.rightMargin: content.inset
-            visible: root.mode === "form"
-            editing: root.editId !== ""
-            foreground: root.foreground
-            fontFamily: root.fontFamily
-            onAccepted: root.commit()
-            onCanceled: root.back()
-          }
+            BookmarkList {
+              id: rows
+              anchors.fill: parent
+              edge: content.pad
+              textPad: content.inset
+              visible: root.mode === "list"
+              marks: root.shown
+              total: root.marks.length
+              selected: root.selected
+              foreground: root.foreground
+              selectedBackground: root.selectedBackground
+              selectedText: root.selectedText
+              fontFamily: root.fontFamily
+              onHovered: function (index) { root.selected = index }
+              onActivated: function (mark) { root.launch(mark) }
+            }
 
-          BookmarkSettings {
-            id: panelSettings
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: content.inset
-            anchors.rightMargin: content.inset
-            visible: root.mode === "settings"
-            defaultPath: root.defaultPath
-            foreground: root.foreground
-            fontFamily: root.fontFamily
-            onAccepted: root.relocate(panelSettings.pathText)
-            onCanceled: root.back()
+            BookmarkForm {
+              id: form
+              anchors.left: parent.left
+              anchors.right: parent.right
+              anchors.leftMargin: content.inset
+              anchors.rightMargin: content.inset
+              visible: root.mode === "form"
+              editing: root.editId !== ""
+              foreground: root.foreground
+              fontFamily: root.fontFamily
+              onAccepted: root.commit()
+              onCanceled: root.back()
+            }
+
+            BookmarkSettings {
+              id: panelSettings
+              anchors.left: parent.left
+              anchors.right: parent.right
+              anchors.leftMargin: content.inset
+              anchors.rightMargin: content.inset
+              visible: root.mode === "settings"
+              defaultPath: root.defaultPath
+              foreground: root.foreground
+              fontFamily: root.fontFamily
+              onAccepted: root.relocate(panelSettings.pathText)
+              onCanceled: root.back()
+            }
           }
         }
 

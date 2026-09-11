@@ -22,7 +22,7 @@ Column {
 
   Text {
     textFormat: Text.PlainText
-    text: root.editing ? "edit bookmark" : "save a new bookmark"
+    text: root.editing ? "edit bookmark" : "new bookmark"
     color: root.foreground
     font.family: root.fontFamily
     font.pixelSize: Style.font.heading

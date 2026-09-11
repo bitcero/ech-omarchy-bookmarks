@@ -31,8 +31,6 @@ Item {
     anchors.fill: parent
     anchors.leftMargin: root.edge
     anchors.rightMargin: root.edge
-    anchors.topMargin: Style.spacing.md
-    anchors.bottomMargin: Style.spacing.md
     visible: root.marks.length > 0
     model: root.marks
     currentIndex: Math.min(root.selected, root.marks.length - 1)
@@ -121,8 +119,8 @@ Item {
     textFormat: Text.PlainText
     horizontalAlignment: Text.AlignHCenter
     text: root.total
-      ? "no bookmark matches\nctrl+⏎ to save one with that name"
-      : "no bookmarks yet\nctrl+⏎ to save the first one"
+      ? "no match\nctrl+⏎ to save one with that name"
+      : "no bookmarks\nctrl+⏎ to add one"
     color: root.foreground
     opacity: 0.55
     font.family: root.fontFamily
