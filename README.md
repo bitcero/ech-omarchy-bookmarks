@@ -4,6 +4,8 @@ A filtered view is a URL. This plugin stores those URLs with a name and
 opens them from a searchable overlay, so the filters you rebuild by hand
 in GitHub, Linear or anywhere else are one keystroke away.
 
+![The bookmarks overlay](ech-bookmarks.jpg)
+
 ## Install
 
 ```bash
