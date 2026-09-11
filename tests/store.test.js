@@ -46,7 +46,9 @@ test("a corrupt file yields no bookmarks instead of throwing", () => {
 
 
 const { execFileSync } = require("node:child_process")
-const { mkdtempSync, writeFileSync, readFileSync, existsSync } = require("node:fs")
+const {
+  mkdtempSync, writeFileSync, readFileSync, existsSync
+} = require("node:fs")
 const { join } = require("node:path")
 const { tmpdir } = require("node:os")
 
