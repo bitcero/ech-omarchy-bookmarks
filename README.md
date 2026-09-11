@@ -35,6 +35,7 @@ o.bind("SUPER + SHIFT + V", "Bookmarks", "omarchy-shell shell toggle bitcero.boo
 | change where bookmarks are stored | `ctrl+,` |
 | clear the filter, then close | `esc` |
 | show this list | `ctrl+h` |
+| about the plugin | `ctrl+i` |
 
 The list is ordered by how often you open each bookmark.
 

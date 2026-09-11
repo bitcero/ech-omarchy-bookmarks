@@ -19,6 +19,7 @@ Rectangle {
     { action: "copy its url", keys: "alt+c" },
     { action: "delete it", keys: "supr · shift+backspace" },
     { action: "storage", keys: "ctrl+," },
+    { action: "about", keys: "ctrl+i" },
     { action: "clear the filter, then close", keys: "esc" }
   ]
 

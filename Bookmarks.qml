@@ -126,6 +126,16 @@ Item {
     mode = "help"
   }
 
+  function about() {
+    mode = "about"
+  }
+
+  function visit(url) {
+    if (!url) return
+    run(opener, ["xdg-open", url])
+    close()
+  }
+
   function settings() {
     panelSettings.pathText = filePath
     mode = "settings"
@@ -242,15 +252,18 @@ Item {
         id: keys
         anchors.fill: parent
         focus: root.mode === "list" || root.mode === "help"
-          || root.pending !== null
+          || root.mode === "about" || root.pending !== null
         Keys.priority: Keys.BeforeItem
         Keys.onPressed: function (event) {
           if (root.pending) {
             if (confirmDrop.handleKey(event)) event.accepted = true
             return
           }
-          if (root.mode === "help") {
+          if (root.mode === "help" || root.mode === "about") {
             if (event.key === Qt.Key_Escape) root.back()
+            else if (root.mode === "about" && isEnter(event)) {
+              root.visit(credits.meta.homepage || "")
+            }
             event.accepted = true
             return
           }
@@ -274,6 +287,8 @@ Item {
             root.askDrop(root.current)
           } else if (event.key === Qt.Key_H && mod(event, Qt.ControlModifier)) {
             root.help()
+          } else if (event.key === Qt.Key_I && mod(event, Qt.ControlModifier)) {
+            root.about()
           } else if (event.key === Qt.Key_Comma
                      && mod(event, Qt.ControlModifier)) {
             root.settings()
@@ -312,8 +327,19 @@ Item {
         }
       }
 
+      BookmarkAbout {
+        id: credits
+        anchors.fill: parent
+        visible: root.mode === "about"
+        manifestPath: Qt.resolvedUrl("manifest.json")
+        foreground: root.foreground
+        fontFamily: root.fontFamily
+        onOpened: function (url) { root.visit(url) }
+      }
+
       Column {
         id: content
+        visible: root.mode !== "about"
         anchors.fill: parent
         spacing: 0
 
