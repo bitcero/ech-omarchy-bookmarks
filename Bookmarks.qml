@@ -114,6 +114,10 @@ Item {
     flash("deleted · " + mark.name)
   }
 
+  function help() {
+    mode = "help"
+  }
+
   function settings() {
     panelSettings.pathText = filePath
     mode = "settings"
@@ -218,9 +222,14 @@ Item {
       Item {
         id: keys
         anchors.fill: parent
-        focus: root.mode === "list"
+        focus: root.mode === "list" || root.mode === "help"
         Keys.priority: Keys.BeforeItem
         Keys.onPressed: function (event) {
+          if (root.mode === "help") {
+            if (event.key === Qt.Key_Escape) root.back()
+            event.accepted = true
+            return
+          }
           if (root.mode !== "list") return
           event.accepted = true
 
@@ -238,6 +247,8 @@ Item {
           } else if (event.key === Qt.Key_Delete
                      && mod(event, Qt.ShiftModifier)) {
             root.drop(root.current)
+          } else if (event.key === Qt.Key_H && mod(event, Qt.ControlModifier)) {
+            root.help()
           } else if (event.key === Qt.Key_Comma
                      && mod(event, Qt.ControlModifier)) {
             root.settings()
@@ -393,6 +404,17 @@ Item {
               onCanceled: root.back()
             }
 
+            BookmarkHelp {
+              id: keysPanel
+              anchors.left: parent.left
+              anchors.right: parent.right
+              anchors.leftMargin: content.inset
+              anchors.rightMargin: content.inset
+              visible: root.mode === "help"
+              foreground: root.foreground
+              fontFamily: root.fontFamily
+            }
+
             BookmarkSettings {
               id: panelSettings
               anchors.left: parent.left
@@ -438,8 +460,8 @@ Item {
             elide: Text.ElideRight
 
             readonly property string hintLine: root.mode === "list"
-              ? "move: ↑↓ · open: ⏎ · new: ctrl+⏎ · edit: ctrl+e · "
-                + "copy: alt+c · delete: shift+del · storage: ctrl+,"
+              ? "new: ctrl+⏎ · help: ctrl+h"
+              : root.mode === "help" ? "close: esc"
               : "confirm: ⏎ · cancel: esc"
           }
         }

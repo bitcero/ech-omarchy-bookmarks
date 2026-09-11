@@ -31,6 +31,7 @@ o.bind("SUPER + SHIFT + V", "Bookmarks", "omarchy-shell shell toggle ech.bookmar
 | delete it | `shift+del` |
 | change where bookmarks are stored | `ctrl+,` |
 | clear the filter, then close | `esc` |
+| show this list | `ctrl+h` |
 
 The list is ordered by how often you open each bookmark.
 
