@@ -79,7 +79,7 @@ Item {
       Text {
         id: site
         anchors.right: uses.left
-        anchors.rightMargin: Style.spacing.sm
+        anchors.rightMargin: Style.spacing.rowPaddingX
         anchors.verticalCenter: parent.verticalCenter
         textFormat: Text.PlainText
         text: Store.host(row.modelData.url)
