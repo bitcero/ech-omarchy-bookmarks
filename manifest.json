@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ech.bookmarks",
+  "name": "Bookmarks",
+  "version": "0.1.0",
+  "author": "ech",
+  "license": "MIT",
+  "description": "Saved filtered views of any web app, searchable and one keystroke away.",
+  "kinds": ["overlay"],
+  "keepLoaded": true,
+  "entryPoints": { "overlay": "Bookmarks.qml" }
+}
