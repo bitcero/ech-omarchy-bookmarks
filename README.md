@@ -10,14 +10,14 @@ in GitHub, Linear or anywhere else are one keystroke away.
 
 ```bash
 git clone https://github.com/bitcero/ech-omarchy-bookmarks.git \
-  ~/.config/omarchy/plugins/ech.bookmarks
+  ~/.config/omarchy/plugins/bitcero.bookmarks
 omarchy-restart-shell
 ```
 
 Then bind a key in `~/.config/hypr/bindings.lua`:
 
 ```lua
-o.bind("SUPER + SHIFT + V", "Bookmarks", "omarchy-shell shell toggle ech.bookmarks")
+o.bind("SUPER + SHIFT + V", "Bookmarks", "omarchy-shell shell toggle bitcero.bookmarks")
 ```
 
 ## Use
