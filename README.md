@@ -39,7 +39,7 @@ The list is ordered by how often you open each bookmark.
 
 ## Storage
 
-`~/.local/state/omarchy/ech-bookmarks.json` by default. Change it with
+`~/.local/state/omarchy/bitcero-bookmarks.json` by default. Change it with
 `ctrl+,` and the file moves to the new path. If bookmarks already exist
 at the destination, those win and the current file stays where it is, so
 pointing several machines at one synced directory does the right thing.

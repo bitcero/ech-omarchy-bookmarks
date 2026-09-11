@@ -12,8 +12,8 @@ Item {
   readonly property string stateDir:
     Quickshell.env("HOME") + "/.local/state/omarchy"
   readonly property string settingsPath:
-    stateDir + "/ech-bookmarks-settings.json"
-  readonly property string defaultPath: stateDir + "/ech-bookmarks.json"
+    stateDir + "/bitcero-bookmarks-settings.json"
+  readonly property string defaultPath: stateDir + "/bitcero-bookmarks.json"
 
   property string filePath: defaultPath
   property var marks: []
