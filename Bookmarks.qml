@@ -244,8 +244,7 @@ Item {
             root.edit(root.current)
           } else if (event.key === Qt.Key_C && mod(event, Qt.AltModifier)) {
             root.copy(root.current)
-          } else if (event.key === Qt.Key_Delete
-                     && mod(event, Qt.ShiftModifier)) {
+          } else if (event.key === Qt.Key_Delete) {
             root.drop(root.current)
           } else if (event.key === Qt.Key_H && mod(event, Qt.ControlModifier)) {
             root.help()
