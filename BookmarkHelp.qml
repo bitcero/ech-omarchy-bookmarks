@@ -46,7 +46,7 @@ Column {
         color: root.foreground
         opacity: 0.7
         font.family: root.fontFamily
-        font.pixelSize: Style.font.bodySmall
+        font.pixelSize: Style.font.subtitle
       }
 
       Text {
@@ -56,7 +56,7 @@ Column {
         text: parent.modelData.keys
         color: root.foreground
         font.family: root.fontFamily
-        font.pixelSize: Style.font.bodySmall
+        font.pixelSize: Style.font.subtitle
       }
     }
   }
