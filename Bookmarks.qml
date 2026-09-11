@@ -363,6 +363,39 @@ Item {
           opacity: 0.5
         }
 
+        BookmarkForm {
+          id: form
+          width: parent.width
+          textLeft: content.textLeft
+          visible: root.mode === "form"
+          editing: root.editId !== ""
+          foreground: root.foreground
+          fontFamily: root.fontFamily
+          onAccepted: root.commit()
+          onCanceled: root.back()
+        }
+
+        BookmarkHelp {
+          id: keysPanel
+          width: parent.width
+          textLeft: content.textLeft
+          visible: root.mode === "help"
+          foreground: root.foreground
+          fontFamily: root.fontFamily
+        }
+
+        BookmarkSettings {
+          id: panelSettings
+          width: parent.width
+          textLeft: content.textLeft
+          visible: root.mode === "settings"
+          defaultPath: root.defaultPath
+          foreground: root.foreground
+          fontFamily: root.fontFamily
+          onAccepted: root.relocate(panelSettings.pathText)
+          onCanceled: root.back()
+        }
+
         Item {
           width: parent.width
           height: parent.height - y - foot.height - root.ruleHeight
@@ -378,7 +411,6 @@ Item {
               anchors.fill: parent
               edge: content.pad
               textPad: content.inset
-              visible: root.mode === "list"
               marks: root.shown
               total: root.marks.length
               selected: root.selected
@@ -390,44 +422,6 @@ Item {
               onActivated: function (mark) { root.launch(mark) }
             }
 
-            BookmarkForm {
-              id: form
-              anchors.left: parent.left
-              anchors.right: parent.right
-              anchors.leftMargin: content.inset
-              anchors.rightMargin: content.inset
-              visible: root.mode === "form"
-              editing: root.editId !== ""
-              foreground: root.foreground
-              fontFamily: root.fontFamily
-              onAccepted: root.commit()
-              onCanceled: root.back()
-            }
-
-            BookmarkHelp {
-              id: keysPanel
-              anchors.left: parent.left
-              anchors.right: parent.right
-              anchors.leftMargin: content.inset
-              anchors.rightMargin: content.inset
-              visible: root.mode === "help"
-              foreground: root.foreground
-              fontFamily: root.fontFamily
-            }
-
-            BookmarkSettings {
-              id: panelSettings
-              anchors.left: parent.left
-              anchors.right: parent.right
-              anchors.leftMargin: content.inset
-              anchors.rightMargin: content.inset
-              visible: root.mode === "settings"
-              defaultPath: root.defaultPath
-              foreground: root.foreground
-              fontFamily: root.fontFamily
-              onAccepted: root.relocate(panelSettings.pathText)
-              onCanceled: root.back()
-            }
           }
         }
 

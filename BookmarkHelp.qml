@@ -1,9 +1,11 @@
 import QtQuick
 import qs.Commons
+import qs.Ui
 
-Column {
+Rectangle {
   id: root
 
+  property int textLeft: 0
   property color foreground: Color.menu.text
   property string fontFamily: Style.font.menuFamily
 
@@ -19,14 +21,34 @@ Column {
     { action: "clear the filter, then close", keys: "esc" }
   ]
 
-  spacing: Style.spacing.md
+  height: rows.implicitHeight + Style.spacing.panelPadding * 2
+  color: Color.menu.selectedBackground
+
+  Rectangle {
+    anchors.bottom: parent.bottom
+    width: parent.width
+    height: Math.max(1, Style.space(1))
+    color: Color.menu.border
+    opacity: 0.5
+  }
+
+  Column {
+    id: rows
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    anchors.topMargin: Style.spacing.panelPadding
+    anchors.leftMargin: root.textLeft
+    anchors.rightMargin: root.textLeft
+    spacing: Style.spacing.md
 
   Text {
     textFormat: Text.PlainText
-    text: "shortcuts"
-    color: root.foreground
+    text: "SHORTCUTS"
+    font.letterSpacing: 1
+    color: Color.menu.selectedText
     font.family: root.fontFamily
-    font.pixelSize: Style.font.heading
+    font.pixelSize: Style.font.bodySmall
   }
 
   Repeater {
@@ -35,7 +57,7 @@ Column {
     Item {
       required property var modelData
 
-      width: root.width
+      width: rows.width
       height: action.height
 
       Text {
@@ -60,4 +82,5 @@ Column {
       }
     }
   }
+}
 }
