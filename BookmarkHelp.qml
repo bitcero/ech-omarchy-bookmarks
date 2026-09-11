@@ -16,7 +16,7 @@ Rectangle {
     { action: "save a new bookmark", keys: "ctrl+⏎" },
     { action: "edit the selected one", keys: "ctrl+e" },
     { action: "copy its url", keys: "alt+c" },
-    { action: "delete it", keys: "del · backspace" },
+    { action: "delete it", keys: "supr · shift+backspace" },
     { action: "storage", keys: "ctrl+," },
     { action: "clear the filter, then close", keys: "esc" }
   ]
