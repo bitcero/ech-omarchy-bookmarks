@@ -63,6 +63,7 @@ Item {
   function move(delta) {
     var last = Math.max(0, shown.length - 1)
     selected = Math.max(0, Math.min(last, selected + delta))
+    rows.disarmPointer()
   }
 
   function store(next) {

@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Commons
+import qs.Ui
 import "store.js" as Store
 
 Item {
@@ -25,6 +26,15 @@ Item {
 
   signal hovered(int index)
   signal activated(var mark)
+
+  function disarmPointer() {
+    gate.reset()
+  }
+
+  PointerMoveGate {
+    id: gate
+    referenceItem: list
+  }
 
   ListView {
     id: list
@@ -107,7 +117,9 @@ Item {
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
-        onEntered: root.hovered(row.index)
+        onPositionChanged: function (mouse) {
+          if (gate.moved(this, mouse)) root.hovered(row.index)
+        }
         onClicked: root.activated(row.modelData)
       }
     }
