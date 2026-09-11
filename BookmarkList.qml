@@ -121,8 +121,8 @@ Item {
     textFormat: Text.PlainText
     horizontalAlignment: Text.AlignHCenter
     text: root.total
-      ? "ningún marcador coincide\nctrl+⏎ para guardar uno con ese nombre"
-      : "sin marcadores todavía\nctrl+⏎ para guardar el primero"
+      ? "no bookmark matches\nctrl+⏎ to save one with that name"
+      : "no bookmarks yet\nctrl+⏎ to save the first one"
     color: root.foreground
     opacity: 0.55
     font.family: root.fontFamily

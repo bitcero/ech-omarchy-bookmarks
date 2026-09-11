@@ -21,7 +21,7 @@ Column {
 
   Text {
     textFormat: Text.PlainText
-    text: "dónde se guardan los marcadores"
+    text: "where bookmarks are stored"
     color: root.foreground
     font.family: root.fontFamily
     font.pixelSize: Style.font.heading
@@ -41,9 +41,9 @@ Column {
     width: parent.width
     textFormat: Text.PlainText
     wrapMode: Text.WordWrap
-    text: "Al cambiar la ruta se mueve el archivo. Si en el destino ya hay "
-      + "marcadores, esos se conservan y el archivo actual se queda donde "
-      + "está."
+    text: "Changing the path moves the file. If bookmarks already exist at "
+      + "the destination, those are kept and the current file stays where "
+      + "it is."
     color: root.foreground
     opacity: 0.55
     font.family: root.fontFamily

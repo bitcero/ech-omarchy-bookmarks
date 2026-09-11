@@ -79,7 +79,7 @@ Item {
   function copy(mark) {
     if (!mark) return
     run(copier, ["wl-copy", "--", Store.fullUrl(mark.url)])
-    flash("copiado")
+    flash("copied")
   }
 
   function compose() {
@@ -100,7 +100,7 @@ Item {
   function commit() {
     var next = Store.upsert(
       marks, { id: editId, url: form.urlText, name: form.nameText })
-    if (!next) { flash("hace falta una url"); return }
+    if (!next) { flash("a url is required"); return }
     store(next)
     query = ""
     selected = 0
@@ -111,7 +111,7 @@ Item {
     if (!mark) return
     store(Store.remove(marks, mark.id))
     selected = 0
-    flash("borrado · " + mark.name)
+    flash("deleted · " + mark.name)
   }
 
   function settings() {
@@ -306,7 +306,7 @@ Item {
               id: fresh
               anchors.right: parent.right
               anchors.verticalCenter: parent.verticalCenter
-              text: "+ nuevo"
+              text: "+ new"
               bordered: true
               foreground: root.foreground
               fontFamily: root.fontFamily
@@ -321,7 +321,7 @@ Item {
               anchors.verticalCenter: parent.verticalCenter
               textFormat: Text.PlainText
               text: root.shown.length
-                + (root.shown.length === 1 ? " marcador" : " marcadores")
+                + (root.shown.length === 1 ? " bookmark" : " bookmarks")
               color: root.foreground
               opacity: 0.45
               font.family: root.fontFamily
@@ -335,7 +335,7 @@ Item {
               anchors.rightMargin: Style.spacing.md
               anchors.verticalCenter: parent.verticalCenter
               textFormat: Text.PlainText
-              text: root.query ? root.query : "buscar por nombre o url…"
+              text: root.query ? root.query : "search by name or url…"
               color: root.foreground
               opacity: root.query ? 1 : 0.45
               font.family: root.fontFamily
@@ -431,9 +431,9 @@ Item {
             elide: Text.ElideRight
 
             readonly property string hintLine: root.mode === "list"
-              ? "↑↓ mover · ⏎ abrir · ctrl+⏎ nuevo · F2 editar · "
-                + "alt+c copiar · shift+supr borrar · ctrl+, dónde se guardan"
-              : "⏎ confirmar · esc cancelar"
+              ? "↑↓ move · ⏎ open · ctrl+⏎ new · F2 edit · "
+                + "alt+c copy · shift+del delete · ctrl+, storage"
+              : "⏎ confirm · esc cancel"
           }
         }
       }

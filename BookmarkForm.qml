@@ -22,7 +22,7 @@ Column {
 
   Text {
     textFormat: Text.PlainText
-    text: root.editing ? "editar marcador" : "guardar un marcador nuevo"
+    text: root.editing ? "edit bookmark" : "save a new bookmark"
     color: root.foreground
     font.family: root.fontFamily
     font.pixelSize: Style.font.heading
@@ -59,7 +59,7 @@ Column {
 
     Text {
       textFormat: Text.PlainText
-      text: "nombre"
+      text: "name"
       color: root.foreground
       opacity: 0.55
       font.family: root.fontFamily
@@ -69,7 +69,7 @@ Column {
     TextField {
       id: nameField
       width: parent.width
-      placeholderText: "PRs esperando mi review"
+      placeholderText: "PRs waiting on my review"
       foreground: root.foreground
       font.family: root.fontFamily
       onAccepted: root.accepted()
